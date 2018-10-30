@@ -24,7 +24,7 @@ export default class extends Controller {
         });
 
         flask.onUpdate((code) => {
-            this.data.set("code", btoa(code))
+            this.data.set("code",  window.btoa(unescape(encodeURIComponent(code))))
         });
 
 
@@ -42,7 +42,7 @@ export default class extends Controller {
      *
      */
     save() {
-        let code = atob(this.data.get("code"));
+        let code = decodeURIComponent(escape((window.atob(this.data.get("code")))));
         let id = helpers.uuidv4();
         database.saveGist(id, code);
 
