@@ -52,4 +52,11 @@ export default class extends Controller {
             location.origin + "?gist=" + id
         );
     }
+
+    /**
+     *
+     */
+    create() {
+        window.location.replace("/");
+    }
 }
